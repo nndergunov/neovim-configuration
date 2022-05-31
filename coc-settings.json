@@ -1,9 +1,11 @@
 {
+    "diagnostic.refreshOnInsertMode": true,
+    "diagnostic.virtualText": true,
+    "golang.suggest.autoImports": true,
   "languageserver": {
-    "go": {
+    "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
   }
