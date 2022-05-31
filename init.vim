@@ -55,6 +55,7 @@ noremap <Right> <NOP>
 " PLUGIN INSTALLS
 " ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
+
 call plug#begin('~/.vim/plugged')
 
 "> Style
@@ -69,11 +70,13 @@ Plug 'preservim/tagbar' " tagbar showing useful info
 Plug 'SirVer/ultisnips' " snippets
 Plug 'preservim/nerdtree' " fileview tree
 Plug 'tpope/vim-commentary' " use gc to make comments
-Plug 'airblade-gitgutter' " show git changes in sign column
+Plug 'airblade/vim-gitgutter' " show git changes in sign column
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " better autocompletion
+Plug 'https://github.com/tpope/vim-surround' " for wrapping/unwrapping stuff
+Plug 'https://github.com/nikvdp/neomux' " terminal in vim
 
 "> Go stuff
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
 
 call plug#end()
 
@@ -88,13 +91,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Show .smthng files (preservim/tagbar)
 let NERDTreeShowHidden=1
+nnoremap <C-n> :NERDTree<CR>
+
+" coc config
+source ~/.config/nvim/coc-init.vim
+let g:coc_global_extensions = ['coc-pairs']
 
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
-
-" autocomplete stuff (Shougo/deoplete.nvim)
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
 " _____________________________________________________________________________
 " AUTOMATIC STUFF
