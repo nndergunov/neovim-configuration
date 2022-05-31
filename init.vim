@@ -1,6 +1,6 @@
-" _____________________________________________________________________________
+" ______________________________________________________________________________
 " SETS
-" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 set encoding=UTF-8
 set title
@@ -35,15 +35,13 @@ set undofile
 
 set incsearch " will search as you go on
 
-set scrolloff=8 " you will start scrolling
-                " when you reach 8th top or bottom line
+set scrolloff=8 " you will start scrolling when you reach 8th top or bottom line
 
 set noshowmode " disables default --insert-- on the bottom of file
 
 set completeopt=menuone,noinsert,noselect " shows autocomplete menu
 
-set signcolumn=yes " shows column for stuff
-                   " like git changes on the left of line numbers
+set signcolumn=yes " shows column for stuff like git changes on the left of line numbers
 set colorcolumn=81,121 " linting recommendation and absolute deadline
 
 set cmdheight=2 " more space for messages
@@ -51,9 +49,9 @@ set cmdheight=2 " more space for messages
 set updatetime=100 " shorter update time helps to be blazingly fast
 
 
-" _____________________________________________________________________________
+" ______________________________________________________________________________
 " LANGUAGES
-" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 "> Go
 " Enable syntax highlighting per default
@@ -78,9 +76,9 @@ let g:go_auto_sameids = 0
 " Add the failing test name to the output of :GoTest
 let g:go_test_show_name = 1
 
-" _____________________________________________________________________________
+" ______________________________________________________________________________
 " REMAPS
-" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 " Disabling arrow keys
 noremap <Up> <NOP>
@@ -95,9 +93,9 @@ nnoremap <leader>h :split<cr>
 " Closing splits
 nnoremap <leader>q :close<cr>
 
-" _____________________________________________________________________________
+" ______________________________________________________________________________
 " PLUGIN INSTALLS
-" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 call plug#begin('~/.vim/plugged')
 
@@ -174,9 +172,9 @@ let g:coc_global_extensions = ['coc-pairs']
 let g:go_def_mapping_enabled = 0
 let g:go_fmt_command = "goimports"
 
-" _____________________________________________________________________________
+" ______________________________________________________________________________
 " AUTOMATIC STUFF
-" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 " delete trailing whitespaces
 fun! TrimWhitespace()
