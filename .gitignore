@@ -1,4 +1,5 @@
 ### nvim plugins ###
+/autoload
 /plugged
 
 ### macOS ###
