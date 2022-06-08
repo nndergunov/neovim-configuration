@@ -1,7 +1,7 @@
 {
-    "diagnostic.refreshOnInsertMode": true,
-    "diagnostic.virtualText": true,
-    "golang.suggest.autoImports": true,
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.virtualText": true,
+  "golang.suggest.autoImports": true,
   "languageserver": {
     "golang": {
       "command": "gopls",

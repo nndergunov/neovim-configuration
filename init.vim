@@ -10,7 +10,6 @@ set shiftwidth=4
 set expandtab
 set smartindent
 
-
 set relativenumber " shows line numbers relative to current line
 set nu " show current line number (in default shows 0)
 set ru " supposed to show runtime errors
@@ -18,8 +17,6 @@ set cursorline " show which line you are on
 
 set nohlsearch " does not highlight search results after you're done
                " highlighting
-
-set spell " spellcheck
 
 set hidden " keeps your buffer in memory even if you navigate from it
 set autoread " read changes from disc automatically if you are tired from GoLand FiLe WaS ChAnGeD oN dIsC
@@ -54,15 +51,16 @@ set updatetime=100 " shorter update time helps to be blazingly fast
 " ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
 "> Go
+
 " Enable syntax highlighting per default
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
+ let g:go_highlight_types = 1
+ let g:go_highlight_fields = 1
+ let g:go_highlight_functions = 1
+ let g:go_highlight_methods = 1
+ let g:go_highlight_structs = 1
+ let g:go_highlight_operators = 1
+ let g:go_highlight_build_constraints = 1
+ let g:go_highlight_extra_types = 1
 
 " Show the progress when running :GoCoverage
 let g:go_echo_command_info = 1
@@ -100,11 +98,15 @@ nnoremap <leader>q :close<cr>
 call plug#begin('~/.vim/plugged')
 
 "> Style
-Plug 'gruvbox-community/gruvbox'
+
+Plug 'sainnhe/gruvbox-material'
+" Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline' " better menu in the bottom of file
 Plug 'ryanoasis/vim-devicons' " showing icons based on file extensions
 Plug 'mkitt/tabline.vim' " better tabline
 Plug 'ncm2/float-preview.nvim' " support floating preview window
+Plug 'rcarriga/nvim-notify' " better notifications
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " code highlighting
 
 "> Multilang stuff
 Plug 'ctrlpvim/ctrlp.vim' " ctrl+p support
@@ -113,11 +115,10 @@ Plug 'preservim/tagbar' " tagbar showing useful info
 Plug 'preservim/nerdtree' " fileview tree
 Plug 'tpope/vim-commentary' " use gc to make comments
 Plug 'airblade/vim-gitgutter' " show git changes in sign column
-Plug 'tpope/vim-fugitive'
- " better autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'}
+Plug 'tpope/vim-fugitive' " vim integration
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'yarn install --frozen-lockfile'} " better autocompletion
 Plug 'https://github.com/tpope/vim-surround' " for wrapping/unwrapping stuff
-Plug 'https://github.com/nikvdp/neomux' " terminal in vim
+" Plug 'https://github.com/nikvdp/neomux' " terminal in vim
 
 "> Go stuff
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -127,12 +128,25 @@ Plug 'lifepillar/pgsql.vim' " PostgreSQL
 
 call plug#end()
 
-filetype off
-filetype plugin indent off
-set runtimepath+=$GOROOT/misc/vim
-filetype plugin indent on
+" filetype off
+" filetype plugin indent off
+" set runtimepath+=$GOROOT/misc/vim
+" filetype plugin indent on
 syntax enable
-colorscheme gruvbox
+
+set background=dark
+let g:airline_theme = 'gruvbox_material'
+colorscheme gruvbox-material
+" colorscheme gruvbox
+
+" treesitter configuration
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+    ensure_installed = { "go", "gomod", "dockerfile", "toml", "yaml", "make", "vim" },
+  highlight = { enable = true },
+  indent = { enable = true }
+}
+EOF
 
 " F8 to open tagbar (preservim/tagbar)
 nmap <F8> :TagbarToggle<CR>
@@ -144,14 +158,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Show .smthng files (preservim/tagbar)
 let NERDTreeShowHidden=1
 nnoremap <C-n> :NERDTree<CR>
-
-" open a NERDTree automatically when vim starts up if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 let NERDTreeIgnore = [
     \ '\~$',
@@ -169,8 +175,26 @@ let g:coc_global_extensions = ['coc-pairs']
 " format with goimports instead of gofmt
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command="gopls"
+let g:go_gopls_gofumpt=1
+let g:go_metalinter_command = "golangci-lint"
+let g:go_metalinter_enabled = ['gocognit', 'gofmt', 'nonamedreturns', 'tenv',
+            \ 'typecheck', 'gochecknoglobals', 'wrapcheck', 'goconst',
+            \ 'ireturn', 'makezero', 'nestif', 'deadcode', 'containedctx',
+            \ 'cyclop', 'funlen', 'nakedret', 'staticcheck', 'dogsled',
+            \ 'exhaustruct', 'exportloopref', 'errname', 'exhaustive', 'godot',
+            \ 'lll', 'predeclared', 'wsl', 'asciicheck', 'durationcheck',
+            \ 'gomoddirectives', 'varnamelen', 'decorder', 'gocritic', 'gosec',
+            \ 'maintidx', 'errcheck', 'unused', 'thelper', 'paralleltest',
+            \ 'unconvert', 'gosimple', 'gofumpt', 'nosprintfhostport',
+            \ 'nlreturn', 'revive', 'dupl', 'errchkjson', 'goheader',
+            \ 'goimports', 'prealloc', 'promlinter', 'testpackage', 'govet',
+            \ 'goprintffuncname', 'ifshort', 'whitespace', 'bidichk',
+            \ 'errorlint', 'goerr113', 'importas', 'gocyclo', 'grouper',
+            \ 'nolintlint', 'ineffassign', 'execinquery', 'forcetypeassert',
+            \ 'gochecknoinits', 'gci', 'gomnd', 'misspell', 'nilnil',
+            \ 'stylecheck', 'varcheck', 'godox', 'tagliatelle', 'depguard',
+            \ 'forbidigo', 'gomodguard']
 
 " ______________________________________________________________________________
 " AUTOMATIC STUFF
