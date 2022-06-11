@@ -1,6 +1,6 @@
 ### nvim plugins ###
 /autoload
-/plugged
+/plugin
 
 ### macOS ###
 # General
