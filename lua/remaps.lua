@@ -20,7 +20,7 @@ map('n', '<leader>q', ':close<cr>', {})
 map('n', '<F8>', ':TagbarToggle<cr>', {})
 
 -- NvimTree settings
-map('n', '<C-n>', ':NvimTreeToggle<cr>', {})
+-- map('n', '<C-n>', ':NvimTreeToggle<cr>', {})
 
 -- Telescope configuration
 map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', {})
@@ -28,3 +28,6 @@ map('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>'
 map('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', {})
 map('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {})
 
+-- Telescope fileview configuration
+-- map('n', '<leader>fb', ':Telescope file_browser<cr>', {})
+map('n', '<C-n>', ':Telescope file_browser<cr>', {})
