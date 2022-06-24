@@ -24,6 +24,7 @@ cmp.setup({
     { name = 'luasnip' }, -- For luasnip users.
   }, {
     { name = 'buffer' },
+    { name = 'nvim_lsp_signature_help' },
   })
 })
 
@@ -53,6 +54,13 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
+
+-- If you want insert `(` after select function or method item
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())

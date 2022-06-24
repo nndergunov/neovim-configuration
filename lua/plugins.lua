@@ -48,6 +48,9 @@ return require('packer').startup(function()
     }} -- search stuff                                                           lua
     use 'mfussenegger/nvim-dap' -- debugger                                      lua
     use 'theHamsta/nvim-dap-virtual-text' -- virtual text for debug support      lua
+    use {"windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end} -- ( makes ) lua
+    use {"hrsh7th/cmp-nvim-lsp-signature-help"} -- shows signature of current thing lua
 
     -- > Go stuff
     use { 'ray-x/go.nvim', run = ':GoInstallBinaries' } --  better go config     lua
