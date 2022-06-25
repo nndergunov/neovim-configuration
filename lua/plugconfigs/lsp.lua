@@ -1,4 +1,10 @@
-require'lspconfig'.gopls.setup{}
+require'lspconfig'.gopls.setup{
+    settings = {
+        gopls = {
+            gofumpt = true
+        }
+    }
+}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -34,14 +40,28 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
+-- tell the server the capability of foldingRange
+-- nvim hasn't added foldingRange to default capabilities, users must add it manually
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+local language_servers = {'gopls'} -- like {'gopls', 'clangd'}
+for _, ls in ipairs(language_servers) do
+    require('lspconfig')[ls].setup({
+        capabilities = capabilities,
+        other_fields = ...
+    })
+end
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
+local servers = {'gopls'}
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     flags = {
-      -- This will be the default in neovim 0.7+
       debounce_text_changes = 150,
     }
   }

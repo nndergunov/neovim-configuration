@@ -18,10 +18,9 @@ vim.opt.smartindent = true
 vim.opt.relativenumber = true -- shows line numbers relative to current line
 vim.opt.nu = true --- show current line number (in default shows 0)
 vim.opt.ru = true -- supposed to show runtime errors
--- vim.opt.cursorline -- show which line you are on
+vim.opt.cursorline = true -- show which line you are on
 
 vim.opt.hlsearch = false -- does not highlight search results after you're done
-               -- highlighting
 
 vim.opt.hidden = true -- keeps your buffer in memory even if you navigate from it
 vim.opt.autoread = true -- read changes from disc automatically if you are tired from GoLand FiLe WaS ChAnGeD oN dIsC
@@ -46,7 +45,7 @@ vim.opt.completeopt= "menuone,noinsert,noselect" -- shows autocomplete menu
 vim.opt.signcolumn = "yes" -- shows column for stuff like git changes on the left of line numbers
 vim.opt.colorcolumn = "81,121" -- linting recommendation and absolute deadline
 
-vim.opt.cmdheight = 2 -- more space for messages
+vim.opt.cmdheight = 1 -- command line has length of 1
 
 vim.opt.updatetime = 100 -- shorter update time helps to be blazingly fast
 

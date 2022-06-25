@@ -11,6 +11,7 @@ require('plugconfigs.gitsigns')
 require('plugconfigs.comments')
 require('plugconfigs.daptext')
 require('plugconfigs.telescope-fb')
+require('plugconfigs.fold')
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -30,7 +31,7 @@ return require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp               lua
 
     -- > Style
-    use 'sainnhe/gruvbox-material' -- colorscheme                                vimscript (it supports MacOS Terminal)
+    use 'sainnhe/gruvbox-material' -- colorscheme                                vimscript (it supports macOS Terminal)
     use 'nvim-lualine/lualine.nvim' --  better menu in the bottom of file        lua
     use 'kyazdani42/nvim-web-devicons' --  showing icons                         lua
     use 'crispgm/nvim-tabline' --  better tabline                                lua
@@ -51,6 +52,9 @@ return require('packer').startup(function()
     use {"windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end} -- ( makes ) lua
     use {"hrsh7th/cmp-nvim-lsp-signature-help"} -- shows signature of current thing lua
+    use {
+        'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'
+    } -- code folding                                                            lua
 
     -- > Go stuff
     use { 'ray-x/go.nvim', run = ':GoInstallBinaries' } --  better go config     lua

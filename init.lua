@@ -3,11 +3,6 @@ require('remaps')
 require('plugins')
 require('autocommands')
 
--- " format with goimports instead of gofmt
--- " disable vim-go :GoDef short cut (gd)
--- " this is handled by LanguageClient [LC]
--- " let g:go_fmt_command="gopls"
--- " let g:go_gopls_gofumpt=1
 -- " let g:go_metalinter_command = "golangci-lint"
 -- " let g:go_metalinter_enabled = ['gocognit', 'gofmt', 'nonamedreturns', 'tenv',
 -- "             \ 'typecheck', 'gochecknoglobals', 'wrapcheck', 'goconst',
