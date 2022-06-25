@@ -35,7 +35,6 @@ return require('packer').startup(function()
     use 'nvim-lualine/lualine.nvim' --  better menu in the bottom of file        lua
     use 'kyazdani42/nvim-web-devicons' --  showing icons                         lua
     use 'crispgm/nvim-tabline' --  better tabline                                lua
-    use 'ncm2/float-preview.nvim' --  support floating preview window            vimscript
     use 'rcarriga/nvim-notify' --  better notifications                          lua
     use 'lewis6991/gitsigns.nvim' --  show git changes in sign column            lua
     use 'j-hui/fidget.nvim' -- show nvim-lsp indexing progress                   lua
