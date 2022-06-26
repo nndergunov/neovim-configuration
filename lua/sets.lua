@@ -40,7 +40,7 @@ vim.opt.scrolloff = 10 -- you will start scrolling when you reach 8th top or bot
 
 vim.opt.showmode = false -- disables default --insert-- on the bottom of file
 
-vim.opt.completeopt= "menuone,noinsert,noselect" -- shows autocomplete menu
+vim.opt.completeopt = "menuone,noinsert,noselect" -- shows autocomplete menu
 
 vim.opt.signcolumn = "yes" -- shows column for stuff like git changes on the left of line numbers
 vim.opt.colorcolumn = "81,121" -- linting recommendation and absolute deadline

@@ -45,14 +45,14 @@ return require('packer').startup(function()
     -- > Nice to have stuff
     use 'preservim/tagbar' --  tagbar showing useful info                        vimscript
     use 'numToStr/Comment.nvim' --  use gc to make comments                      lua
-    use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'},
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-    }} -- search stuff                                                           lua
+    use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' },
+        { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    } } -- search stuff                                                           lua
     use 'mfussenegger/nvim-dap' -- debugger                                      lua
     use 'theHamsta/nvim-dap-virtual-text' -- virtual text for debug support      lua
-    use {"windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end} -- ( makes ) lua
-    use {"hrsh7th/cmp-nvim-lsp-signature-help"} -- shows signature of current thing lua
+    use { "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end } -- ( makes ) lua
+    use { "hrsh7th/cmp-nvim-lsp-signature-help" } -- shows signature of current thing lua
     use {
         'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'
     } -- code folding                                                            lua
@@ -66,4 +66,3 @@ return require('packer').startup(function()
     use 'lifepillar/pgsql.vim' --  PostgreSQL                                    vimscript
 
 end)
-

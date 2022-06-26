@@ -1,5 +1,5 @@
 local map = vim.api.nvim_set_keymap
-local default_opts = {noremap = true, silent = true}
+local default_opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
 
@@ -14,13 +14,10 @@ map('n', '<leader>v', ':vsplit<cr>', {})
 map('n', '<leader>h', ':split<cr>', {})
 
 -- Closing splits
-map('n', '<leader>q', ':close<cr>', {})
+map('n', '<leader>x', ':close<cr>', default_opts)
 
 -- F8 to open tagbar (preservim/tagbar)
 map('n', '<F8>', ':TagbarToggle<cr>', {})
-
--- NvimTree settings
--- map('n', '<C-n>', ':NvimTreeToggle<cr>', {})
 
 -- Telescope configuration
 map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', {})
@@ -29,5 +26,4 @@ map('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', 
 map('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {})
 
 -- Telescope fileview configuration
--- map('n', '<leader>fb', ':Telescope file_browser<cr>', {})
 map('n', '<C-n>', ':Telescope file_browser<cr>', {})

@@ -1,5 +1,5 @@
 require('lint').linters_by_ft = {
-  go = {'golangcilint',}
+    go = { 'golangcilint', }
 }
 
 local golangci = require('lint.linters.golangcilint')
@@ -25,4 +25,3 @@ golangci.args = {
     '-D', 'unparam',
     '-D', 'wastedassign'
 }
-
