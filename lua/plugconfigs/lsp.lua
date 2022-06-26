@@ -1,4 +1,6 @@
-require'lspconfig'.gopls.setup{
+local navic = require("nvim-navic")
+
+require'lspconfig'.gopls.setup {
     settings = {
         gopls = {
             gofumpt = true
@@ -17,6 +19,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  navic.attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -47,19 +50,14 @@ capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true
 }
-local language_servers = {'gopls'} -- like {'gopls', 'clangd'}
-for _, ls in ipairs(language_servers) do
-    require('lspconfig')[ls].setup({
-        capabilities = capabilities,
-        other_fields = ...
-    })
-end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {'gopls'}
+local servers = {'gopls', 'clangd', 'dockerls', 'sumneko_lua', 'sqls', 'taplo', 'yamlls', 'rust_analyzer'}
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
+    capabilities = capabilities,
+    other_fields = ...,
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,

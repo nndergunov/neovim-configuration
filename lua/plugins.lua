@@ -12,6 +12,7 @@ require('plugconfigs.comments')
 require('plugconfigs.daptext')
 require('plugconfigs.telescope-fb')
 require('plugconfigs.fold')
+require('plugconfigs.lint')
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -39,6 +40,7 @@ return require('packer').startup(function()
     use 'lewis6991/gitsigns.nvim' --  show git changes in sign column            lua
     use 'j-hui/fidget.nvim' -- show nvim-lsp indexing progress                   lua
     use 'rcarriga/nvim-dap-ui' -- debugger ui                                    lua
+    use 'SmiteshP/nvim-navic' -- statusbar on top                                lua
 
     -- > Nice to have stuff
     use 'preservim/tagbar' --  tagbar showing useful info                        vimscript
@@ -54,6 +56,7 @@ return require('packer').startup(function()
     use {
         'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'
     } -- code folding                                                            lua
+    use 'mfussenegger/nvim-lint' -- linting                                      lua
 
     -- > Go stuff
     use { 'ray-x/go.nvim', run = ':GoInstallBinaries' } --  better go config     lua
