@@ -1,5 +1,6 @@
 -- Setup nvim-cmp.
 local cmp = require 'cmp'
+local lspkind = require('lspkind')
 
 cmp.setup({
     snippet = {
@@ -25,7 +26,10 @@ cmp.setup({
     }, {
         { name = 'buffer' },
         { name = 'nvim_lsp_signature_help' },
-    })
+    }),
+    formatting = {
+        format = lspkind.cmp_format()
+    }
 })
 
 -- Set configuration for specific filetype.

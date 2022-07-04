@@ -15,6 +15,6 @@ vim.cmd([[
         autocmd BufWritePre *.go :silent! lua require('go.format').goimport()
         autocmd BufWritePre * call TrimWhitespace()
         autocmd BufWritePost * lua require('lint').try_lint()
-        autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+        autocmd BufWritePost pluginstalls.lua source <afile> | PackerCompile
     augroup end
 ]])

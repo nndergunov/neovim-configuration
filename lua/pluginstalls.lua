@@ -1,19 +1,3 @@
-require('plugconfigs.gruvbox')
-require('plugconfigs.lualine')
-require('plugconfigs.treesitter')
-require('plugconfigs.lsp')
-require('plugconfigs.nvimgo')
-require('plugconfigs.fidget')
-require('plugconfigs.telescope')
-require('plugconfigs.autocompletion')
-require('plugconfigs.tabline')
-require('plugconfigs.gitsigns')
-require('plugconfigs.comments')
-require('plugconfigs.daptext')
-require('plugconfigs.telescope-fb')
-require('plugconfigs.fold')
-require('plugconfigs.lint')
-
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
@@ -29,7 +13,8 @@ return require('packer').startup(function()
     use 'hrsh7th/cmp-path' -- show path suggestions in autocompletion            lua
     use 'hrsh7th/cmp-buffer' -- buffer words whatever they may be                lua
     use 'hrsh7th/cmp-cmdline' -- adds completion to command mode I guess         lua
-    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp               lua
+    use { 'saadparwaiz1/cmp_luasnip',
+        requires = 'L3MON4D3/LuaSnip' } -- snippets source for nvim-cmp          lua
 
     -- > Style
     use 'sainnhe/gruvbox-material' -- colorscheme                                vimscript (it supports macOS Terminal)
@@ -40,29 +25,31 @@ return require('packer').startup(function()
     use 'lewis6991/gitsigns.nvim' --  show git changes in sign column            lua
     use 'j-hui/fidget.nvim' -- show nvim-lsp indexing progress                   lua
     use 'rcarriga/nvim-dap-ui' -- debugger ui                                    lua
-    use 'SmiteshP/nvim-navic' -- statusbar on top                                lua
+    use 'nvim-treesitter/nvim-treesitter-context' -- that xcode apple magic fold lua
+    use 'SmiteshP/nvim-navic' -- where in code am I                              lua
+    use 'p00f/nvim-ts-rainbow' -- parentheses are raibowie                       lua
+    use 'onsails/lspkind.nvim' -- show type icon in cmp window                   lua
 
     -- > Nice to have stuff
-    use 'preservim/tagbar' --  tagbar showing useful info                        vimscript
+    use 'simrat39/symbols-outline.nvim' -- tagbar showing useful info            lua
     use 'numToStr/Comment.nvim' --  use gc to make comments                      lua
-    use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' },
+    use { 'nvim-telescope/telescope.nvim', requires = {
+        { 'nvim-lua/plenary.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    } } -- search stuff                                                           lua
+    } } -- search stuff                                                          lua
     use 'mfussenegger/nvim-dap' -- debugger                                      lua
     use 'theHamsta/nvim-dap-virtual-text' -- virtual text for debug support      lua
     use { "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end } -- ( makes ) lua
-    use { "hrsh7th/cmp-nvim-lsp-signature-help" } -- shows signature of current thing lua
-    use {
-        'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'
+        config = function() require("nvim-autopairs").setup {} end } -- ( -> )   lua
+    use 'hrsh7th/cmp-nvim-lsp-signature-help' -- shows signature of curr thing   lua
+    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'
     } -- code folding                                                            lua
     use 'mfussenegger/nvim-lint' -- linting                                      lua
+    use({ "glepnir/lspsaga.nvim", branch = "main",
+    }) -- lsp things not in command bar                                          lua
 
     -- > Go stuff
     use { 'ray-x/go.nvim', run = ':GoInstallBinaries' } --  better go config     lua
     use 'ray-x/guihua.lua' --  for floating windows idk                          lua
-
-    -- > Other language stuff
-    use 'lifepillar/pgsql.vim' --  PostgreSQL                                    vimscript
 
 end)
