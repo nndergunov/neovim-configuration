@@ -25,8 +25,8 @@ map('n', '<leader>fg', require('telescope.builtin').live_grep, default_opts)
 map('n', '<leader>fb', require('telescope.builtin').buffers, default_opts)
 map('n', '<leader>fh', require('telescope.builtin').help_tags, default_opts)
 
--- Telescope fileview configuration
-map('n', '<C-n>', require('telescope').extensions.file_browser.file_browser, default_opts)
+-- Fileview configuration
+map('n', '<C-n>', ":Neotree<cr>", default_opts)
 
 -- LSP stuff remaps using lsp_finder
 map('n', 'gh', require('lspsaga.finder').lsp_finder, default_opts)

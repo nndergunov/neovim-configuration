@@ -7,7 +7,9 @@ return require('packer').startup(function()
     use 'neovim/nvim-lspconfig' -- configurations for the built-in LSP client    lua
     use { 'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate' } --  code highlighting                                lua
-    use 'nvim-telescope/telescope-file-browser.nvim' -- fileview telescope ext.  lua
+    use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", requires = {
+        "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", }
+    } -- normal treeview                                                         lua
     use 'hrsh7th/nvim-cmp' -- autocompletion                                     lua
     use 'hrsh7th/cmp-nvim-lsp' -- autocompletion to lsp binding                  lua
     use 'hrsh7th/cmp-path' -- show path suggestions in autocompletion            lua
@@ -17,8 +19,7 @@ return require('packer').startup(function()
         requires = 'L3MON4D3/LuaSnip' } -- snippets source for nvim-cmp          lua
 
     -- > Style
-    -- use 'sainnhe/gruvbox-material' -- colorscheme                                vimscript (it supports macOS Terminal)
-    use 'ellisonleao/gruvbox.nvim'
+    use 'ellisonleao/gruvbox.nvim' -- gruvbox gruvbox                            lua
     use { 'catppuccin/nvim', as = 'catppuccin' } -- nice nvim theme              lua
     use 'nvim-lualine/lualine.nvim' --  better menu in the bottom of file        lua
     use 'kyazdani42/nvim-web-devicons' --  showing icons                         lua
