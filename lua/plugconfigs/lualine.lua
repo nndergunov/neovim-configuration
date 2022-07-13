@@ -3,7 +3,8 @@ local navic = require("nvim-navic")
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = 'gruvbox-material',
+        -- theme = "catppuccin",
+        theme = "gruvbox",
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {},

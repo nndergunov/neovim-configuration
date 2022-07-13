@@ -28,7 +28,7 @@ map('n', '<leader>fh', require('telescope.builtin').help_tags, default_opts)
 -- Telescope fileview configuration
 map('n', '<C-n>', require('telescope').extensions.file_browser.file_browser, default_opts)
 
--- LSP stuff remaps
+-- LSP stuff remaps using lsp_finder
 map('n', 'gh', require('lspsaga.finder').lsp_finder, default_opts)
 map('n', '<leader>ca', require('lspsaga.codeaction').code_action, default_opts)
 map('v', '<leader>ca', function()
@@ -36,3 +36,15 @@ map('v', '<leader>ca', function()
     require('lspsaga.codeaction').range_code_action()
 end, default_opts)
 map('n', 'gr', require('lspsaga.rename').lsp_rename, default_opts)
+
+-- DAP (debugger) mappings
+map('n', '<F5>', require('dap').continue, default_opts)
+map('n', '<F10>', require('dap').step_over, default_opts)
+map('n', '<F11>', require('dap').step_into, default_opts)
+map('n', '<F12>', require('dap').step_out, default_opts)
+map('n', '<leader>b', require('dap').toggle_breakpoint, default_opts)
+map('n', '<leader>B', ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))", default_opts)
+map('n', '<leader>lp', ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))", default_opts)
+map('n', '<leader>dr', require('dap').repl.open, default_opts)
+map('n', '<leader>dl', require('dap').run_last, default_opts)
+map('n', '<leader>td', require('dap-go').debug_test, default_opts)

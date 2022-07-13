@@ -17,7 +17,9 @@ return require('packer').startup(function()
         requires = 'L3MON4D3/LuaSnip' } -- snippets source for nvim-cmp          lua
 
     -- > Style
-    use 'sainnhe/gruvbox-material' -- colorscheme                                vimscript (it supports macOS Terminal)
+    -- use 'sainnhe/gruvbox-material' -- colorscheme                                vimscript (it supports macOS Terminal)
+    use 'ellisonleao/gruvbox.nvim'
+    use { 'catppuccin/nvim', as = 'catppuccin' } -- nice nvim theme              lua
     use 'nvim-lualine/lualine.nvim' --  better menu in the bottom of file        lua
     use 'kyazdani42/nvim-web-devicons' --  showing icons                         lua
     use 'crispgm/nvim-tabline' --  better tabline                                lua
@@ -51,5 +53,6 @@ return require('packer').startup(function()
     -- > Go stuff
     use { 'ray-x/go.nvim', run = ':GoInstallBinaries' } --  better go config     lua
     use 'ray-x/guihua.lua' --  for floating windows idk                          lua
+    use 'leoluz/nvim-dap-go' -- runs debugger for go                             lua
 
 end)
