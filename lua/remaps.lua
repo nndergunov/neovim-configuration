@@ -28,6 +28,13 @@ map('n', '<leader>fh', require('telescope.builtin').help_tags, default_opts)
 -- Fileview configuration
 map('n', '<C-n>', ":Neotree<cr>", default_opts)
 
+-- LSP yeah
+
+map('n', 'gD', vim.lsp.buf.declaration, default_opts)
+map('n', 'gd', vim.lsp.buf.definition, default_opts)
+map('n', 'K', vim.lsp.buf.hover, default_opts)
+map('n', 'gi', vim.lsp.buf.implementation, default_opts)
+
 -- LSP stuff remaps using lsp_finder
 map('n', 'gh', require('lspsaga.finder').lsp_finder, default_opts)
 map('n', '<leader>ca', require('lspsaga.codeaction').code_action, default_opts)

@@ -53,3 +53,5 @@ vim.opt.updatetime = 100 -- shorter update time helps to be blazingly fast
 
 vim.opt.splitright = true -- default vertical split goes right
 vim.opt.splitbelow = true -- default horizontal split goes below
+
+vim.opt.spell = true -- cool spell checking

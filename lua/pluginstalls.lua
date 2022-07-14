@@ -50,6 +50,13 @@ return require('packer').startup(function()
     use 'mfussenegger/nvim-lint' -- linting                                      lua
     use({ "glepnir/lspsaga.nvim", branch = "main",
     }) -- lsp things not in command bar                                          lua
+    use { "ellisonleao/glow.nvim", branch = 'main' } -- markdown previewer       lua
+    use {
+        'lewis6991/spellsitter.nvim',
+        config = function()
+            require('spellsitter').setup()
+        end
+    } -- cool spellchecker for dummy dums.                                       lua
 
     -- > Go stuff
     use { 'ray-x/go.nvim', run = ':GoInstallBinaries' } --  better go config     lua
