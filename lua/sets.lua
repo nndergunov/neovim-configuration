@@ -47,7 +47,7 @@ vim.opt.completeopt = "menuone,noinsert,noselect" -- shows autocomplete menu
 vim.opt.signcolumn = "yes" -- shows column for stuff like git changes on the left of line numbers
 vim.opt.colorcolumn = "81,121" -- linting recommendation and absolute deadline
 
-vim.opt.cmdheight = 1 -- command line has length of 1
+vim.opt.cmdheight = 1 -- command line has height of 1
 
 vim.opt.updatetime = 100 -- shorter update time helps to be blazingly fast
 

@@ -55,3 +55,7 @@ map('n', '<leader>lp', ":lua require('dap').set_breakpoint(nil, nil, vim.fn.inpu
 map('n', '<leader>dr', require('dap').repl.open, default_opts)
 map('n', '<leader>dl', require('dap').run_last, default_opts)
 map('n', '<leader>td', require('dap-go').debug_test, default_opts)
+
+-- NeoTest mappings.
+map('n', '<leader>tr', ":lua require('neotest').run.run()<cr>", default_opts)
+map('n', '<leader>tf', ":lua require('neotest').run.run(vim.fn.expand('%'))<cr>", default_opts)

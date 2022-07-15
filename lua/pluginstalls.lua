@@ -32,6 +32,9 @@ return require('packer').startup(function()
     use 'SmiteshP/nvim-navic' -- where in code am I                              lua
     use 'p00f/nvim-ts-rainbow' -- parentheses are raibowie                       lua
     use 'onsails/lspkind.nvim' -- show type icon in cmp window                   lua
+    use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", config = function()
+        require("lsp_lines").register_lsp_virtual_lines()
+    end, }) -- fixes annoying longer-than-line LSP suggestions                   lua
 
     -- > Nice to have stuff
     use 'simrat39/symbols-outline.nvim' -- tagbar showing useful info            lua
@@ -57,10 +60,13 @@ return require('packer').startup(function()
             require('spellsitter').setup()
         end
     } -- cool spellchecker for dummy dums.                                       lua
+    use { "nvim-neotest/neotest",
+        requires = { "antoinemadec/FixCursorHold.nvim" } } -- test runner        lua
 
     -- > Go stuff
     use { 'ray-x/go.nvim', run = ':GoInstallBinaries' } --  better go config     lua
     use 'ray-x/guihua.lua' --  for floating windows idk                          lua
     use 'leoluz/nvim-dap-go' -- runs debugger for go                             lua
+    use 'nvim-neotest/neotest-go' -- go adapter for test framework               lua
 
 end)
